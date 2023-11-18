@@ -1,0 +1,25 @@
+<table>
+    <thead>
+        <th>No</th>
+        <th>Method</th>
+        <th>url</th>
+        <th>status</th>
+        <th>time</th>
+        <th>size</th>
+        <th>priority</th>
+    </thead>
+    @for(request of data.log.entries; track request.id) {
+        <tr (click)="expand(request.id)">
+            <td>{{ request.id }}</td>
+            <td>{{ request.request.method }}</td>
+            <td>{{ request.request.url }}</td>
+            <td>{{ request.response.status }}</td>
+            <td>{{ request.time | number:"1.2-2" }}s</td>
+            <td>{{ request.response._transferSize }}kb</td>
+            <td>{{ request._priority }}</td>
+        </tr>
+        <tr>
+            <div [ngClass]="{'show': selected.includes(request.id), 'hide': !selected.includes(request.id)}" class="hiddeable">Hola</div>
+        </tr>
+    }
+</table>

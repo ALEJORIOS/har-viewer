@@ -1,0 +1,21 @@
+table {
+    tr {
+        td {
+            max-width: 200px;
+            overflow-x: auto;
+        }
+        .hiddeable {
+            background-color: red;
+            overflow: hidden;
+        }
+        .hide {
+            height: 0;
+            transition: height 1s ease-in;
+        }
+
+        .show {
+            height: 100%;
+            transition: height 1s ease-in;
+        }
+    }
+}
