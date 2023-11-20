@@ -1,21 +1,43 @@
-table {
-    tr {
-        td {
-            max-width: 200px;
-            overflow-x: auto;
-        }
-        .hiddeable {
-            background-color: red;
-            overflow: hidden;
-        }
-        .hide {
-            height: 0;
-            transition: height 1s ease-in;
+
+.layout {
+    box-sizing: border-box;
+    overflow-x: hidden;
+    width: 100%;
+    padding: 1rem;
+
+    .table {
+        display: grid;
+        grid-template-columns: repeat(2, auto) 1fr repeat(4, auto) ;
+        width: 100%;
+        .head {
+            display: flex;
+            align-items: center;
+            padding: 4px 8px;
+            background: linear-gradient(to bottom, #ff9900, #ff6600);
+            height: 24px;
+            font-weight: 500;
+            color: white;
+            &:first-child {
+                border-radius: 8px 0 0 0;
+            }
+            &:nth-child(7) {
+                border-radius: 0 8px 0 0;
+            }
         }
 
-        .show {
-            height: 100%;
-            transition: height 1s ease-in;
+        .cell {
+            height: fit-content;
+            max-width: 100%;
+            overflow: hidden;
+            padding: 4px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            &:nth-child(7n-6) {
+                border-left: 1px solid #F0F0F0;
+            }
+            // border-top: 1px solid red;
+            border-right: 1px solid #F0F0F0;
+            border-bottom: 1px solid #F0F0F0;
         }
     }
 }

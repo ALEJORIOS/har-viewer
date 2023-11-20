@@ -12,8 +12,9 @@
         width: 100vmin;
         z-index: -1;
         opacity: 1;
-        filter: invert(69%) sepia(51%) saturate(4122%) hue-rotate(360deg) brightness(102%) contrast(105%) drop-shadow(5px 3px #ff7b00);
-        // filter: drop-shadow(3px 3px red);
+        // filter: invert(69%) sepia(51%) saturate(4122%) hue-rotate(360deg) brightness(102%) contrast(105%) drop-shadow(5px 3px #ff7b00);
+        // filter: invert(73%) sepia(83%) saturate(434%) hue-rotate(355deg) brightness(103%) contrast(99%) drop-shadow(5px 3px #ff7b00);
+        filter: drop-shadow(3px 3px #ff7b00);
     }
     h1 {
         font-size: clamp(8dvw, 16vmin, 15dvw);
