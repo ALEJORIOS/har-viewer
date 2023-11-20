@@ -25,4 +25,8 @@ export class HomeComponent {
     fileReader.readAsText(file);
   }
 
+  submit() {
+    document.getElementById('submitFile')?.click();
+  }
+
 }

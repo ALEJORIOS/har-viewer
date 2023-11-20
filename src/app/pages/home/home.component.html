@@ -1,1 +1,11 @@
-<input type="file" (change)="uploadFile($event)" accept="har">
+<div class="layout">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M48,-66.6C62.7,-55.4,75.4,-42,78.4,-26.9C81.4,-11.7,74.7,5.2,68.7,21.9C62.6,38.6,57.3,55,45.9,66.4C34.6,77.8,17.3,84.2,1.2,82.5C-14.8,80.8,-29.7,71.1,-44.5,60.8C-59.4,50.5,-74.2,39.7,-81.3,24.8C-88.3,9.9,-87.6,-9.2,-79,-22.5C-70.3,-35.9,-53.8,-43.6,-39.3,-54.8C-24.8,-66,-12.4,-80.8,2.1,-83.7C16.7,-86.7,33.3,-77.8,48,-66.6Z" transform="translate(100 100)" />
+      </svg>
+    <h1>Har Viewer</h1>
+    <p>Upload a Har file to visualize and edit all its contents</p>
+    <button class="btn" (click)="submit()">
+        <span>Upload File</span>
+    </button>
+    <input type="file" id="submitFile" (change)="uploadFile($event)" accept="har">
+</div>
