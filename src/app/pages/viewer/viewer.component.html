@@ -2,19 +2,31 @@
     <div class="table">
         <div class="head">No</div>
         <div class="head">Method</div>
-        <div class="head">url</div>
-        <div class="head">status</div>
-        <div class="head">time</div>
-        <div class="head">size</div>
-        <div class="head">priority</div>
+        <div class="head">URL</div>
+        <div class="head">Status</div>
+        <div class="head">Time</div>
+        <div class="head">Size</div>
+        <div class="head">Priority</div>
         @for(request of data.log.entries; track request.id) {
-            <div class="cell">{{ request.id }}</div>
-            <div class="cell">{{ request.request.method }}</div>
-            <div class="cell">{{ request.request.url }}</div>
-            <div class="cell">{{ request.response.status }}</div>
-            <div class="cell">{{ request.time | number:"1.2-2" }}</div>
-            <div class="cell">{{ request.response._transferSize }}</div>
+            <div class="cell id">{{ request.id }}</div>
+            <div class="cell method" [style.color]="request.request.method | methodColor">{{ request.request.method }}</div>
+            <div class="cell" (click)="expandRequest(request.id)">{{ request.request.url }}</div>
+            <div class="cell status" [title]="" [style.color]="request.response.status | statusColor">{{ request.response.status }}</div>
+            <div class="cell">{{ request.time | number:"1.2-2" }}s</div>
+            <div class="cell">{{ request.response._transferSize }}kb</div>
             <div class="cell">{{ request._priority }}</div>
+            <div class="totalCell" [ngClass]="{'show': selected.includes(request.id), 'hide': !selected.includes(request.id)}">
+                <table>
+                    <tbody>
+                        @for (header of request.request.headers; track $index) {
+                            <tr>
+                                <td>{{ header.name }}</td>
+                                <td>{{ header.value }}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         }
     </div>
 </div>

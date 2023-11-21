@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CommService } from '../../services/comm.service';
+import { MethodColorPipe } from '../../pipes/method-color.pipe';
+import { StatusColorPipe } from '../../pipes/status-color.pipe';
+import { StatusDescriptionPipe } from '../../pipes/status-description.pipe';
 
 @Component({
   selector: 'app-viewer',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MethodColorPipe, StatusColorPipe, StatusDescriptionPipe],
   templateUrl: './viewer.component.html',
   styleUrl: './viewer.component.scss'
 })
@@ -42,6 +45,14 @@ export class ViewerComponent {
   }
 
   expand(id: number) {
+    if(this.selected.includes(id)) {
+      this.selected = this.selected.filter(sel => sel !== id);
+    }else{
+      this.selected.push(id);
+    }
+  }
+
+  expandRequest(id: number) {
     if(this.selected.includes(id)) {
       this.selected = this.selected.filter(sel => sel !== id);
     }else{

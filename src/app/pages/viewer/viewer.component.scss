@@ -1,5 +1,7 @@
 
 .layout {
+    display: flex;
+    justify-content: center;
     box-sizing: border-box;
     overflow-x: hidden;
     width: 100%;
@@ -8,7 +10,7 @@
     .table {
         display: grid;
         grid-template-columns: repeat(2, auto) 1fr repeat(4, auto) ;
-        width: 100%;
+        width: clamp(600px, 60dvw, 80dvw);
         .head {
             display: flex;
             align-items: center;
@@ -27,17 +29,63 @@
 
         .cell {
             height: fit-content;
-            max-width: 100%;
+            // max-width: 50vw;
             overflow: hidden;
             padding: 4px;
             text-overflow: ellipsis;
             white-space: nowrap;
-            &:nth-child(7n-6) {
+            &:nth-child(8n-8) {
                 border-left: 1px solid #F0F0F0;
             }
             // border-top: 1px solid red;
             border-right: 1px solid #F0F0F0;
             border-bottom: 1px solid #F0F0F0;
+        }
+
+        .totalCell {
+            grid-column: 1/-1;
+            overflow-y: hidden;
+            border-left: 1px solid #F0F0F0;
+            border-right: 1px solid #F0F0F0;
+            table {
+                border-spacing: 10px 6px;
+                tr {
+                    td:first-child {
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+
+        .hide {
+            max-height: 0;
+            transition: max-height 0.2s ease-in;
+        }
+        
+        .show {
+            max-height: 1000px;
+            transition: max-height 0.2s ease-in;
+        }
+
+        .id {
+            color: #D0D0D0;
+        }
+
+        .method {
+            font-weight: 600;
+        }
+        
+        .status {
+            font-weight: 500;
+            color: #C0C0C0;
+        }
+    }
+}
+
+@media (orientation: portrait) {
+    .layout {
+        .table {
+            width: 100%;
         }
     }
 }
