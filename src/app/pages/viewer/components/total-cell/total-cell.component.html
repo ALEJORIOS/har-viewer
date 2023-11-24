@@ -1,0 +1,15 @@
+<div class="total-cell">
+    <interface (interface)="selectInterface($event)"></interface>
+    @if (interface === 'request') {
+        <request [data]="request"></request>
+    }
+    @if (interface === 'response') {
+        <response [data]="response"></response>
+    }
+    @if (interface === 'general') {
+        <general [data]="general"></general>
+    }
+    @if (interface === 'timing') {
+        <timing [data]="timings"></timing>
+    }
+</div>

@@ -4,17 +4,20 @@ import { CommService } from '../../services/comm.service';
 import { MethodColorPipe } from '../../pipes/method-color.pipe';
 import { StatusColorPipe } from '../../pipes/status-color.pipe';
 import { StatusDescriptionPipe } from '../../pipes/status-description.pipe';
+import { FormatDescriptionPipe } from '../../pipes/format-description.pipe';
+import { TotalCellComponent } from './components/total-cell/total-cell.component';
 
 @Component({
   selector: 'app-viewer',
   standalone: true,
-  imports: [CommonModule, MethodColorPipe, StatusColorPipe, StatusDescriptionPipe],
+  imports: [CommonModule, MethodColorPipe, StatusColorPipe, StatusDescriptionPipe, TotalCellComponent],
   templateUrl: './viewer.component.html',
   styleUrl: './viewer.component.scss'
 })
 export class ViewerComponent {
   data: any;
   selected: any[] = [];
+  showDetails: boolean[] = [];
   constructor(private communication: CommService) {
     this.checkDataInStorage();
   }
@@ -23,7 +26,6 @@ export class ViewerComponent {
     this.communication.fileData.subscribe({
       next: (res) => {
         this.data = res;
-        this.addIds();
         localStorage.setItem("data", JSON.stringify(this.data))
         console.log('> ', this.data);
       }
@@ -33,15 +35,10 @@ export class ViewerComponent {
   checkDataInStorage() {
     if(localStorage.getItem('data')) {
       this.data = JSON.parse(localStorage.getItem('data')!);
+      this.communication.fileData.next(this.data);
     }else{
       this.readChanges();
     }
-  }
-
-  addIds() {
-    this.data.log.entries = this.data.log.entries.map((query: any, index: number) => {
-      return {...query, id: index}
-    });
   }
 
   expand(id: number) {
@@ -53,10 +50,12 @@ export class ViewerComponent {
   }
 
   expandRequest(id: number) {
+    console.log('Entra: ', id);
     if(this.selected.includes(id)) {
       this.selected = this.selected.filter(sel => sel !== id);
     }else{
       this.selected.push(id);
     }
+    console.log('Sale: ', this.selected);
   }
 }

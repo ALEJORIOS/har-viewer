@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../tms-gb"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "pcds",
+		"search.useGlobalIgnoreFiles": false,
+		"search.useParentIgnoreFiles": false
+	}
+}

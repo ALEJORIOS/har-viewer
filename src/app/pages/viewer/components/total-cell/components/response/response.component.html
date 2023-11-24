@@ -1,0 +1,70 @@
+<h2>Response</h2>
+<h3>General info</h3>
+<table>
+    <tbody>
+        <tr>
+            <td>redirectURL</td>
+            <td>{{ data.redirectURL }}</td>
+        </tr>
+        <tr>
+            <td>status</td>
+            <td>{{ data.status }}</td>
+        </tr>
+        <tr>
+            <td>statusText</td>
+            <td>{{ data.statusText }}</td>
+        </tr>
+        <tr>
+            <td>error</td>
+            <td>{{ data._error }}</td>
+        </tr>
+        <tr>
+            <td>transferSize</td>
+            <td>{{ data._transferSize }}</td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<h3>Headers</h3>
+<table>
+    <tbody>
+        @for(header of data.headers; track $index) {
+            <tr>
+                <td>{{ header.name }}</td>
+                <td>{{ header.value }}</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if(data.cookies.length) {
+    <hr>
+    <h3>Cookies</h3>
+    <table class="noWrap">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>domain</th>
+                <th>expires</th>
+                <th>httpOnly</th>
+                <th>path</th>
+                <th>sameSite</th>
+                <th>secure</th>
+                <th>value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(cookie of data.cookies; track $index) {
+                <tr>
+                    <td>{{ cookie.name }}</td>
+                    <td>{{ cookie.domain }}</td>
+                    <td>{{ cookie.expires }}</td>
+                    <td>{{ cookie.httpOnly }}</td>
+                    <td>{{ cookie.path }}</td>
+                    <td>{{ cookie.sameSite }}</td>
+                    <td>{{ cookie.secure }}</td>
+                    <td>{{ cookie.value }}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

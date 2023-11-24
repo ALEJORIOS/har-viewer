@@ -29,7 +29,7 @@
 
         .cell {
             height: fit-content;
-            // max-width: 50vw;
+            cursor: pointer;
             overflow: hidden;
             padding: 4px;
             text-overflow: ellipsis;
@@ -37,34 +37,26 @@
             &:nth-child(8n-8) {
                 border-left: 1px solid #F0F0F0;
             }
-            // border-top: 1px solid red;
             border-right: 1px solid #F0F0F0;
             border-bottom: 1px solid #F0F0F0;
         }
 
-        .totalCell {
+        total-cell {
             grid-column: 1/-1;
             overflow-y: hidden;
             border-left: 1px solid #F0F0F0;
             border-right: 1px solid #F0F0F0;
-            table {
-                border-spacing: 10px 6px;
-                tr {
-                    td:first-child {
-                        white-space: nowrap;
-                    }
-                }
-            }
         }
 
         .hide {
             max-height: 0;
-            transition: max-height 0.2s ease-in;
+            transition: all 0.12s ease-in;
+            padding: 0;
         }
         
         .show {
-            max-height: 1000px;
-            transition: max-height 0.2s ease-in;
+            max-height: 400px;
+            transition: all 0.12s ease-in;
         }
 
         .id {

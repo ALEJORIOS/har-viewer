@@ -1,0 +1,16 @@
+button {
+    cursor: pointer;
+    background: linear-gradient(to bottom, #ff9900, #ff6600);
+    border: none;
+    padding: 3px;
+    border-radius: 4px;
+    user-select: none;
+    border-radius: 2px;
+    padding: 8px 12px;
+    color: #fff;
+
+    .selected {
+        background: linear-gradient(to bottom, #ff9900, red);
+    }
+}
+

@@ -7,26 +7,15 @@
         <div class="head">Time</div>
         <div class="head">Size</div>
         <div class="head">Priority</div>
-        @for(request of data.log.entries; track request.id) {
-            <div class="cell id">{{ request.id }}</div>
+        @for(request of data.log.entries; track $index) {
+            <div class="cell id">{{ $index }}</div>
             <div class="cell method" [style.color]="request.request.method | methodColor">{{ request.request.method }}</div>
-            <div class="cell" (click)="expandRequest(request.id)">{{ request.request.url }}</div>
+            <div class="cell" (click)="expandRequest($index)">{{ request.request.url }}</div>
             <div class="cell status" [title]="" [style.color]="request.response.status | statusColor">{{ request.response.status }}</div>
             <div class="cell">{{ request.time | number:"1.2-2" }}s</div>
             <div class="cell">{{ request.response._transferSize }}kb</div>
             <div class="cell">{{ request._priority }}</div>
-            <div class="totalCell" [ngClass]="{'show': selected.includes(request.id), 'hide': !selected.includes(request.id)}">
-                <table>
-                    <tbody>
-                        @for (header of request.request.headers; track $index) {
-                            <tr>
-                                <td>{{ header.name }}</td>
-                                <td>{{ header.value }}</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+            <total-cell [general]="request" [request]="request.request" [response]="request.response" [timings]="request.timings" [ngClass]="{'show': selected.includes($index), 'hide': !selected.includes($index)}"></total-cell>
         }
     </div>
 </div>

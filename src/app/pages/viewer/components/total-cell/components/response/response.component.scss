@@ -1,0 +1,50 @@
+table {
+    border-collapse: collapse;
+    thead {
+        th:first-child {
+            white-space: nowrap;
+            padding-left: 0;
+        }
+        th {
+            font-weight: 600;
+            padding-left: 2vw;
+            text-align: left;
+            color: #ff8800;
+        }
+    }
+    tbody {
+        tr {
+            td:first-child, th:first-child {
+                white-space: nowrap;
+                padding-left: 0;
+                font-weight: 500;
+            }
+            td {
+                padding-left: 2vw;
+                white-space: wrap;
+                pre {
+                    font-family: 'Be-vietnam-pro', sans-serif;
+                    margin: 0;
+                }
+            }
+            &:hover {
+                background-color: #ff990010;
+            }
+        }
+    }
+}
+
+table.noWrap {
+    tbody {
+        tr {
+            td {
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #E0E0E0;
+}

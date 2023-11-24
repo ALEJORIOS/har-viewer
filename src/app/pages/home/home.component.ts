@@ -26,6 +26,7 @@ export class HomeComponent {
   }
 
   submit() {
+    localStorage.removeItem('data');
     document.getElementById('submitFile')?.click();
   }
 
